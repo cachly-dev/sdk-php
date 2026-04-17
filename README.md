@@ -2,7 +2,7 @@
 
 Official PHP SDK for [cachly.dev](https://cachly.dev) – Managed Valkey/Redis cache.
 
-**DSGVO-compliant · German servers · 30s provisioning**
+**GDPR-compliant · German servers · Live in 30 seconds**
 
 ## Installation
 
@@ -104,9 +104,9 @@ public function __construct(private CachlyClient $cache) {}
 | `semantic(): SemanticCache` | Access semantic cache helper |
 | `raw(): PredisClient` | Direct Predis access |
 
-## Batch API – mehrere Ops in einem Round-Trip
+## Batch API — Multiple Ops in One Round-Trip
 
-Bündelt GET/SET/DEL/EXISTS/TTL-Ops in **einem** HTTP-Request oder einer Predis-Pipeline.
+Bundle GET/SET/DEL/EXISTS/TTL operations into **one** HTTP request or Predis pipeline.
 
 ```php
 use Cachly\CachlyClient;
@@ -128,7 +128,7 @@ $results = $cache->batch([
 $user  = $results[0]->value;       // string|null
 $ok    = $results[2]->ok;          // bool
 $found = $results[3]->exists;      // bool
-$secs  = $results[4]->ttlSeconds;  // int (-1 = kein TTL, -2 = nicht vorhanden)
+$secs  = $results[4]->ttlSeconds;  // int (-1 = no TTL, -2 = key missing)
 ```
 
 ## Environment Variables
@@ -142,6 +142,27 @@ CACHLY_VECTOR_URL=https://api.cachly.dev/v1/sem/your-vector-token
 
 Find both values in your [cachly.dev dashboard](https://cachly.dev/instances).
 
-## License
+## AI Dev Brain — Persistent Memory for Your Coding Assistant
 
+cachly ships a **30-tool MCP server** that gives Claude Code, Cursor, GitHub Copilot, and Windsurf a persistent memory across sessions.
 
+```bash
+npx @cachly-dev/init
+```
+
+`session_start(instance_id, focus)` returns a full briefing in one call: last session summary, relevant lessons, open failures, brain health.
+
+→ Full docs: [cachly.dev/docs/ai-memory](https://cachly.dev/docs/ai-memory)
+
+---
+
+## Links
+
+- 📖 [cachly.dev docs](https://cachly.dev/docs)
+- 🧠 [AI Memory / MCP Server](https://cachly.dev/docs/ai-memory)
+- 🐛 [Issues](https://github.com/cachly-dev/sdk-php/issues)
+- 📦 [Packagist](https://packagist.org/packages/cachly/sdk)
+
+---
+
+MIT © [cachly.dev](https://cachly.dev)
